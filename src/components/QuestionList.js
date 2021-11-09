@@ -1,10 +1,14 @@
 import React from "react";
+import QuestionItem from "./QuestionItem";
 
-function QuestionList() {
+function QuestionList({questions, isLoaded, handleDelete, handleChangeIndex}) {
+
+  const questionsList = questions.map(question => <QuestionItem key = {question.id} handleChangeIndex={handleChangeIndex} handleDelete={handleDelete} question = {question}/>)
+
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{/* display QuestionItem components here after fetching */}</ul>
+      <ul>{isLoaded ? questionsList : "Loading..."}</ul>
     </section>
   );
 }
